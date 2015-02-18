@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<site>
+	<prop name="site" value="tieba" />
+	<prop name="siteName" value="tieba_bbs_monitor" />
+	<prop name="siteFlag" value="101" />
+	<prop name="charset" value="gbk" />
+	<prop name="downInterval" value="3" />
+	<prop name="page" value="2" />
+	<prop name="threadNum" value="1" />
+	<prop name="login" value="true" />
+	<!-- <prop name="accessUrl" value="http://tieba.baidu.com/f?kw=%C8%FC%C2%D6" />--><!-- 赛轮 -->
+	<prop name="accessUrl" value="" />
+<!-- 列表页 -->
+	<prop name="title" value="//LI[@class[contains(.,'list')]]//DIV[@class[contains(.,'title')]]/A[@title]" />	
+	<prop name="url" value="//LI[@class[contains(.,'list')]]//DIV[@class[contains(.,'title')]]/A[@title]/@href" />
+	<prop name="url_prefix" value="http://tieba.baidu.com" />
+	
+	<prop name="next" value="//A[contains(.,'下一页')]/@href" />
+	<prop name="next_prefix" value="http://tieba.baidu.com" />
+	
+<!-- 内容页 -->
+<!-- 
+	<prop name="author" value="//DIV[contains(@class,'l_post') and contains(@class,'noborder')]/DIV[@class='d_author']/UL/LI[@class='d_name']/A/text()" />
+	<prop name="reply_count" value="//LI[@class='l_reply_num']/SPAN[1]" />
+	<prop name="click_count" value="" />
+	<prop name="img_url" value="//DIV[contains(@class,'post_content') and contains(@class,'firstfloor')]//DIV[contains(@id,'post_content')]/IMG[@class[contains(.,'Image')]]/@src" />
+	<prop name="pubtime" value="//DIV[@class[contains(.,'d_post_content_firstfloor')]]//DIV[@class='core_reply_tail ']/UL/LI[2]/SPAN" />
+	<prop name="content" value="//DIV[contains(@class,'firstfloor')]/DIV[contains(@class,'p_content_nameplate')]/CC/DIV[contains(@class,'post_content')]" />
+	-->	
+	<prop name="author" value="//DIV[@class='p_postlist']/DIV[1]/DIV[@class='d_author']/UL/LI[@class='d_name']/A" />
+	<prop name="reply_count" value="//UL[@class='l_posts_num']/LI[@class='l_reply_num' and contains(.,'回复')]" />
+	<prop name="click_count" value="" />
+	<prop name="img_url" value="//DIV[@class='p_postlist']//DIV/IMG/@src" />
+	<prop name="pubtime" value="//DIV[contains(@data-field,'post_index') and position() &gt; 1]//LI/SPAN[@class='j_reply_data']" />
+	<prop name="content" value="//DIV[@class='p_postlist']/DIV[1]/DIV/DIV[contains(@class,'p_content')]" />
+	
+	<!-- 
+	<prop name="reply_content" value="//DIV[not(contains(@class,'firstfloor'))]/DIV[contains(@class,'p_content_nameplate')]/CC/DIV[contains(@class,'post_content')]" />
+	<prop name="reply_time" value="//DIV[contains(@class,'post_content') and not(contains(@class,'firstfloor'))]//DIV[@class='core_reply_tail ']/UL[contains(@class,'p_tail')]/LI[2]/SPAN" />
+	<prop name="reply_name" value="//DIV[contains(@class,'l_post') and not(contains(@class,'noborder'))]/DIV[@class='d_author']/UL/LI[@class='d_name']/A/text()" />
+	-->
+	<prop name="reply_content" value="//DIV[@class='p_postlist']/DIV[position()&gt;1 and @data-field]/DIV[contains(@class,'d_post_content_main')]/DIV[contains(@class, 'content')]" />
+	<prop name="reply_time" value="//DIV[contains(@data-field,'post_index') and position() &gt; 1]//LI/SPAN[@class='j_reply_data']" />
+	<prop name="reply_name" value="//DIV[@class='p_postlist']/DIV[position()&gt;1 and @data-field]/DIV[@class='d_author']/UL/LI[@class='d_name']/A" />
+	
+	
+	<prop name="reply_next" value="//A[contains(.,'下一页')]/@href" />
+	<prop name="reply_next_prefix" value="http://tieba.baidu.com" />
+	<prop name="column" value="//A[@id='tab_forumname']/@title" />
+	<prop name="source" value="" />
+	<prop name="pageTitle" value="//H1" />
+</site>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<site>
+	<prop name="site" value="tirechina" />
+	<prop name="siteName" value="tirechina_news_search" />
+	<prop name="siteFlag" value="9" />
+	<prop name="charset" value="gbk" />
+	<prop name="downInterval" value="3" />
+	<prop name="page" value="2" />
+	<prop name="threadNum" value="1" />
+	<prop name="accessUrl" value="http://www.tirechina.net/article/search.php?searchtype=title&keywords=&lt;keyword&gt;&catid=0&typeid=0&fromdate=&todate=&ordertype=0&search=1" />
+	<!-- 列表页 -->
+	<prop name="title" value="//A[@class='searchtitle']" />
+	<prop name="url" value="//A[@class='searchtitle']/@href" />
+	<prop name="url_prefix" value="http://www.tirechina.net" />
+	<prop name="brief" value="//DIV[@class='wznn']" />
+	<prop name="pubtime" value="//DIV[@class='wznn']/DIV/SPAN" />
+	<prop name="next" value="//DIV[@class='pages']/A[contains(.,'下')]/@href" />
+	<prop name="next_prefix" value="http://www.tirechina.net"/>
+
+	<!-- 内容页 -->
+	<prop name="originalSource" value="//DIV[@class='inc_pagenavto']/text()[contains(.,'来源')]" />
+	<prop name="imgUrl" value="//DIV[@id='endText']//IMG/@src" />
+	<prop name="content" value="//DIV[@id='endText']" />
+</site>

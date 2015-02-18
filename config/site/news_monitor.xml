@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<!-- 新闻搜索站点公有配置  -->
+	<bean id="news_monitor_${site}" class="common.siteinfo.Siteinfo">
+		<property name="siteName" value="${siteName}" />
+		<property name="siteFlag" value="${siteFlag}" />
+		<property name="charset" value="${charset}" />
+		<property name="downInterval" value="${downInterval}" />
+		<property name="page" value="${page}" />
+		<property name="threadNum" value="${threadNum}" />
+		<property name="agent" value="${agent}" />
+		<property name="login" value="${login}" />
+		<!-- 站点入口url -->
+		<property name="url" value="${accessUrl}" />
+		<!-- 站点的抽取组件，分为元数据、详细数据等类型 -->
+		<property name="commonComponent">
+			<map>
+				<entry key="META" value-ref="meta_${site}_news_monitor" />
+				<entry key="DATA" value-ref="data_${site}_news_monitor" />
+			</map>
+		</property>
+	</bean>
+
+	<!-- 元数据抽取组件 -->
+	<bean id="meta_${site}_news_monitor" class="common.siteinfo.CommonComponent">
+		<!-- 组件类型 -->
+		<property name="type" value="META" />
+
+		<!-- 组件包含的属性 -->
+		<property name="components">
+			<map>
+				<!-- 标题 -->
+				<entry key="title">
+					<!-- 属性的相关信息，属性名，属性值，抽取值是否需要格式化，是否需要特殊处理(反射)，是否需要前缀，是否作为唯一字段 -->
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="title" />
+						<property name="xpath" value="${title}" />
+					</bean>
+				</entry>
+				<!-- URL -->
+				<entry key="url">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="url" />
+						<property name="xpath" value="${url}" />
+						<property name="prefix" value="${url_prefix}" />
+					</bean>
+				</entry>
+				<!-- 翻页 -->
+				<entry key="next">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="NEXTPAGE" />
+						<property name="name" value="next" />
+						<property name="xpath" value="${next}" />
+						<property name="prefix" value="${next_prefix}" />
+					</bean>
+				</entry>
+				
+				<!-- 发表时间 -->
+				<entry key="pubtime">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="TIME" />
+						<property name="name" value="pubtime" />
+						<property name="xpath" value="${pubtime}" />
+						<property name="reflect" value="0" />
+					</bean>
+				</entry>
+				<!-- 发布源 -->
+				<entry key="source">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="source" />
+						<property name="xpath" value="${source}" />
+					</bean>
+				</entry>
+				<!-- 摘要 -->
+				<entry key="brief">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="brief" />
+						<property name="xpath" value="${brief}" />
+					</bean>
+				</entry>
+				<!-- 摘要 -->
+				<entry key="same_num">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="same_num" />
+						<property name="xpath" value="${same_num}" />
+					</bean>
+				</entry>
+				<!-- 相同新闻链接 -->
+				<entry key="same_url">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="same_url" />
+						<property name="xpath" value="${same_url}" />
+						<property name="prefix" value="${next_prefix}" />
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<!-- 详细数据抽取组件 -->
+	<bean id="data_${site}_news_monitor" class="common.siteinfo.CommonComponent">
+		<property name="type" value="DATA" />
+		<property name="components">
+			<map>
+				<!-- 来源 -->
+				<entry key="originalSource">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="FIXED" />
+						<property name="name" value="originalSource" />
+						<property name="xpath" value="${originalSource}" />
+					</bean>
+				</entry>
+				<!-- 正文 -->
+				<entry key="content">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="FIXED" />
+						<property name="name" value="content" />
+						<property name="xpath" value="${content}" />
+					</bean>
+				</entry>
+				<!-- 图片链接 -->
+				<entry key="imgUrl">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="FIXED" />
+						<property name="name" value="imgUrl" />
+						<property name="xpath" value="${imgUrl}" />
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+</beans>

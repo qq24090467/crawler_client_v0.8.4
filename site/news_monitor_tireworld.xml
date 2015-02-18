@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<site>
+	<prop name="site" value="tireworld" />
+	<prop name="siteName" value="tireworld_news_monitor" />
+	<prop name="siteFlag" value="12" />
+	<prop name="charset" value="utf-8" />
+	<prop name="downInterval" value="3" />
+	<prop name="page" value="2" />
+	<prop name="threadNum" value="5" />
+	<prop name="accessUrl" value="" />
+
+	<!-- 列表页 -->
+	<prop name="title" value="//DIV[@class='pageleft_Article_Page_List']/UL/LI/A/SPAN[@class='ldt']" />
+	<prop name="url" value="//DIV[@class='pageleft_Article_Page_List']/UL/LI/A/@href" />
+	<prop name="url_prefix" value="http://www.tireworld.com.cn" />
+	<prop name="pubtime" value="//DIV[@class='pageleft_Article_Page_List']/UL/LI/A/SPAN[@class='lbt']" />
+	<prop name="next" value="//DIV[@class='article_pages']/A[contains(.,'下一页')]/@href" />
+	<prop name="next_prefix" value="http://www.tireworld.com.cn/list/"/>
+	<!-- 内容页 -->
+	<prop name="originalSource" value="//DIV[@class='article_from']" />
+	<prop name="content" value="//DIV[@id='articleCon']" />
+	<prop name="imgUrl" value="//DIV[@id='articleCon']//IMG/@src" />
+</site>

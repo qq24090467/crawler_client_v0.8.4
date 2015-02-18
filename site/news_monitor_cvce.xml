@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<site>
+	<prop name="site" value="cvce" />
+	<prop name="siteName" value="cvce_news_monitor" />
+	<prop name="siteFlag" value="142" />
+	<prop name="charset" value="utf-8" />
+	<prop name="downInterval" value="5" />
+	<prop name="page" value="5" />
+	<prop name="threadNum" value="1" />
+	<prop name="accessUrl" value="" />
+
+	<!-- 列表页 -->
+	<prop name="title" value="//DIV[@class='content']/DIV/UL/LI/A" />
+	<prop name="url" value="//DIV[@class='content']/DIV/UL/LI/A/@href" />
+	<prop name="url_prefix" value="http://cv.ce.cn/zxz/zxzhydt/" />
+	<prop name="brief" value=""/>
+	<prop name="pubtime" value="//DIV[@class='content']/DIV/UL/LI/SPAN" />
+
+	<prop name="next" value="" />
+	<prop name="next_prefix" value="" /> 
+
+	<!-- 内容页 -->
+
+	<prop name="content" value="//DIV[@class='content']//DIV[@class='TRS_Editor']" />
+	<prop name="author" value="//DIV/SPAN[@id='articleAuthor']" />
+	<prop name="imgUrl" value="//DIV[@class='content']//DIV[@class='TRS_Editor']//IMG/@src"/>
+	
+	<prop name="originalSource" value="//DIV/SPAN[@id='articleSource']" />
+	
+	
+	
+</site>

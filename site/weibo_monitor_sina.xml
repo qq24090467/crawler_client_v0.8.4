@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<site>
+	<prop name="site" value="sina" />
+	<prop name="siteName" value="sina_weibo_monitor" />
+	<prop name="siteFlag" value="13" />
+	<prop name="charset" value="utf-8" />
+	<prop name="downInterval" value="30" />
+	<prop name="page" value="100" />
+	<prop name="threadNum" value="5" />
+	<prop name="login" value="true" />
+<!-- 列表页 -->
+	<prop name="author_url" value="//H2/SPAN/A[last()]/@href | //DIV/DIV[@class='icon_bed'][last()]/A" />
+	<prop name="author" value="//DIV/SPAN[@class='name'] | //H2/STRONG" />
+	<prop name="author_id" value="//AUTHORID" />
+	<prop name="author_img" value="//DIV[@class='pf_head_pic']/IMG/@src" />
+	<prop name="content" value="//DIV[@class='identity_info S_txt2']/P | //DIV[@class='pf_intro bsp']/SPAN" />
+	
+	<prop name="fans_num" value="//TD[@class='S_line1'][2]/STRONG | //STRONG[@node-type='fans']" />
+	<prop name="attent_num" value="//TD[@class='S_line1'][1]/STRONG | //STRONG[@node-type='follow']" />
+	<prop name="weibo_num" value="//TD[@class='S_line1'][3]/STRONG | //STRONG[@node-type='weibo']" />
+	<prop name="certify" value="//H2/SPAN/A[1]/I/@title | //DIV/DIV[@class='icon_bed'][1]/A/@title | //DIV/IMG/@title" />
+	<prop name="address" value="//DIV[@class='tags']/EM[@class='S_txt2']" />
+	<prop name="sex" value="//DIV[@class='tags']/A[1]/EM/@title" />
+	<prop name="fans_url" value="//A[contains(SPAN,'粉丝')]/@href | //A[contains(.,'关注/粉丝')]/@href" />
+	<prop name="follow_url" value="//A[contains(SPAN,'粉丝')]/@href | //A[contains(.,'关注/粉丝')]/@href" />
+	<prop name="weibo_url" value="//A[contains(.,'微博')][@bpfilter]/@href | //A[contains(SPAN,'微博')]/@href" />
+	<prop name="info_url" value="//A[contains(.,'资料')]/@href" />
+	<prop name="tag" value="//DIV[@class='label S_txt2'][text()='标签']/../DIV[@class='con']/A/SPAN | //DIV[@class='tags_list W_textb']/SPAN/A" />
+	<prop name="nick" value="//DIV[@class='infoblock']/DIV/DIV[text()='昵称']/../DIV[@class='con'] | //A[@class='logo_img']/@title" />
+	<prop name="company" value="//DIV[text()='公司']/../DIV[@class='con']/P/A" />
+	<prop name="birth" value="//DIV[@class='infoblock']/DIV/DIV[text()='生日']/../DIV[@class='con']" />
+	<prop name="regist_time" value="//DIV[@class='infoblock']/DIV/DIV[text()='注册时间']/../DIV[@class='con']" />
+	<prop name="concact" value="//LI/SPAN" />
+	<prop name="user_prefix" value="http://weibo.com" />
+	
+	<prop name="fans_author_url" value="//DIV[contains(@class,'face')]/A/@href" />
+	<prop name="fans_author" value="//DIV[contains(@class,'face')]/A/@title" />
+	<prop name="fans_author_img" value="//DIV[contains(@class,'face')]/A/IMG/@src" />
+	<prop name="fans_address" value="//SPAN[@class='addr']" />
+	<prop name="fans_attent_num" value="//DIV[@class='connect']/A[1]" />
+	<prop name="fans_fans_num" value="//DIV[@class='connect']/A[2]" />
+	<prop name="fans_weibo_num" value="//DIV[@class='connect']/A[3]" />
+	<prop name="fans_follow_url" value="//DIV[@class='connect']/A[1]/@href" />
+	<prop name="fans_fans_url" value="//DIV[@class='connect']/A[2]/@href" />
+	<prop name="fans_weibo_url" value="//DIV[@class='connect']/A[3]/@href" />
+	<prop name="fans_sex" value="//SPAN[@class='addr']/EM/@class" />
+	<prop name="fans_next" value="//A[contains(.,'下一页')]/@href" />
+	<prop name="fans_certify" value="]/DIV/DIV/DIV/A/I/@title" />
+	<prop name="fans_prefix" value="http://weibo.com" />
+	<prop name="fans_next_prefix" value="http://weibo.com" />
+	
+	<prop name="weibo_content" value="//DIV[@action-type][not(@feedtype)]/DIV/DIV[@class='WB_detail']/DIV[@class='WB_text']" />
+	<prop name="weibo_rtt_content" value="]/DIV/DIV[@class='WB_detail']/DIV/DIV[@node-type='feed_list_forwardContent']" />
+	<prop name="weibo_content_url" value="//DIV[@action-type][not(@feedtype)]/DIV/DIV[@class='WB_detail']/DIV/DIV[@class='WB_from']/A[1]/@href" />
+	<prop name="weibo_img_url" value="]/DIV/DIV[@class='WB_detail']//IMG/@src" />
+	<prop name="weibo_pubtime" value="//DIV[@action-type][not(@feedtype)]/DIV/DIV[@class='WB_detail']/DIV/DIV[@class='WB_from']/A[1]" />
+	<prop name="weibo_source" value="//DIV[@action-type][not(@feedtype)]/DIV/DIV[@class='WB_detail']/DIV/DIV[@class='WB_from']/A[2]" />
+	<prop name="weibo_rtt_num" value="//DIV[@action-type][not(@feedtype)]/DIV/DIV[@class='WB_detail']/DIV/DIV[@class='WB_handle']/A[2]" />
+	<prop name="weibo_comment_num" value="//DIV[@action-type][not(@feedtype)]/DIV/DIV[@class='WB_detail']/DIV/DIV[@class='WB_handle']/A[4]" />
+	<prop name="weibo_mid" value="//DIV[@action-type][not(@feedtype)]/@mid" />
+	<prop name="weibo_next" value="//DIV[@class='W_loading'] | //A[SPAN[text()='下一页']]/@href" />
+	<prop name="weibo_prefix" value="http://weibo.com" />
+	<prop name="weibo_next_prefix" value="http://weibo.com" />
+	
+	<prop name="comment_uid" value="//DL/DD/A/@usercard" />
+	<prop name="comment_author_url" value="//DL/DD/A[1]/@href" />
+	<prop name="comment_author" value="//DL/DD/A[1]/@title" />
+	<prop name="comment_author_img" value="//DL/DT/A/IMG/@src" />
+	<prop name="comment_time" value="//DL/DD/SPAN" />
+	<prop name="comment_content" value="//DL/DD" />
+	<prop name="comment_next" value="//SPAN[text()='下一页']/@action-data" />
+	<prop name="comment_prefix" value="http://weibo.com" />
+	<prop name="comment_next_prefix" value="http://weibo.com/aj/comment/big?" />
+	
+	<prop name="rtt_uid" value="//DL/DD/A/@usercard" />
+	<prop name="rtt_author_url" value="//DL/DD/A[1]/@href" />
+	<prop name="rtt_author" value="//DL/DD/A[1]/@title" />
+	<prop name="rtt_author_img" value="//DL/DT/A/IMG/@src" />
+	<prop name="rtt_time" value="//DL/DD/DIV/DIV/SPAN[@class='fl']/EM/A/@title" />
+	<prop name="rtt_content" value="//DL/DD/EM" />
+	<prop name="rtt_url" value="//DL/DD/DIV/DIV/SPAN[@class='fl']/EM/A[@title]/@href" />
+	<prop name="rtt_next" value="//SPAN[text()='下一页']/@action-data" />
+	<prop name="rtt_prefix" value="http://weibo.com" />
+	<prop name="rtt_next_prefix" value="http://weibo.com/aj/mblog/info/big?" />
+</site>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<site>
+	<prop name="site" value="jd" />
+	<prop name="siteName" value="jd_ebusiness_search" />
+	<prop name="siteFlag" value="49" />
+	<prop name="charset" value="utf-8" />
+	<prop name="downInterval" value="3" />
+	<prop name="page" value="2" />
+	<prop name="threadNum" value="1" />
+	<!-- <prop name="accessUrl" value="http://search.jd.com/search?keyword=&lt;keyword&gt;&enc=utf-8&qr=&qrst=UNEXPAND&et=&rt=1&sttr=1&wtype=2#filter" 
+		/> -->
+	<prop name="accessUrl"
+		value="http://list.jd.com/list.html?cat=6728,6742,9248&ev=exbrand_&lt;keyword&gt;@&page=1&JL=3_品牌_&lt;keyword&gt;" />
+
+	<!-- 列表页 -->
+
+	<prop name="title" value="//DIV[@id='plist']//LI[@class='gl-item']//A[@title]/@title" />
+	<prop name="url" value="//DIV[@id='plist']//LI[@class='gl-item']//A[@title]/@href" />
+	<!-- 下一页 -->
+	<!-- <prop name="next" value="//SPAN[@class='fp-text']/I/text()" /> -->
+	<prop name="next" value="//A[@class='pn-next']/@href" />
+	<prop name="next_prefix" value="" />
+	<prop name="price" value="" />
+	<!-- 内容页 -->
+	<!-- 内容 -->
+	<prop name="content"
+		value="" /><!-- 
+		//DIV[@id='product-detail-1']/DIV[@class='detail-content']//text()[normalize-space()] -->
+	<!-- 图片介绍 -->
+	<prop name="imgs_info" value="//DIV[@class='detail-content']//IMG/@data-lazyload" />
+	<!-- 成交量 -->
+	<prop name="transation" value="//SPAN[@class='p-commit']" />
+	<!-- 商品名称 -->
+	<prop name="name"
+		value="//UL[@class='detail-list']/LI[contains(.,'名称')]/text()" />
+	<!-- 品牌 -->
+	<prop name="brand"
+		value="//UL[@class='detail-list']/LI[contains(.,'品牌')]|//DIV[@class='breadcrumb']/SPAN[2]/A[1]" />
+	<!-- 胎面宽度 -->
+	<prop name="width" value="//UL[@class='detail-list']/LI[contains(.,'宽度')]" />
+	<!-- 直径 -->
+	<prop name="diameter" value="//UL[@class='detail-list']/LI[contains(.,'尺寸')]" />
+	<!-- 型号 -->
+	<prop name="model" value="//UL[@class='detail-list']/LI[contains(.,'商品名称')]" />
+	<!-- 从标题或简介中获取 -->
+	<!-- 价格 -->
+
+	<!-- 图片-info -->
+	<!-- -->
+	<!-- 图片-产品 -->
+	<prop name="imgs_product" value="//DIV[@class='spec-items']/UL/LI/IMG/@src" />
+
+	<!-- 商品介绍-内容 -->
+	<prop name="info_content" value="//DIV[@class='detail-content']" />
+	<!-- 商品介绍-商品码 -->
+	<prop name="info_code"
+		value="//UL[@class='detail-list']/LI[contains(.,'编号')]/text()" />
+
+	<!-- 商品介绍-发布时间 -->
+	<prop name="info_pubtime"
+		value="//UL[@class='detail-list']/LI[contains(.,'时间')]/text()" />
+	<!-- 商品介绍-类型 -->
+	<prop name="info_type"
+		value="//UL[@class='detail-list']/LI[contains(.,'类别')]/text()" />
+	<!-- 规格参数 -->
+	<prop name="params" value="//UL[@class='detail-list']" />
+	<!-- 包装清单 -->
+
+	<!-- 产品卖家-名称 -->
+	<prop name="owner_name" value="//DL[@id='seller']/DD/A/text()" />
+	<!-- 产品卖家-综合分 -->
+	<prop name="owner_score" value="//LI[@id='summary-service']/DIV[2]/A/text()" />
+	<!-- 产品卖家-商品评分 -->
+	<prop name="owner_pscore" value="//LI[@id='summary-service']/DIV[2]/A/text()" />
+	<!-- 产品卖家-服务评分 -->
+	<prop name="owner_sscore" value="//LI[@id='summary-service']/DIV[2]/A/text()" />
+	<!-- 产品卖家-公司名 -->
+	<prop name="owner_company" value="//LI[@id='summary-service']/DIV[2]/A/text()" />
+	<!-- 产品卖家-所在地 -->
+	<prop name="owner_address" value="//LI[@id='summary-service']/DIV[2]/A/text()" />
+	<!-- 产品卖家-链接 -->
+	<prop name="owner_url" value="//LI[@id='summary-service']/DIV[2]/A/text()" />
+	<!-- 产品评价-评论人 -->
+
+	<!-- 产品评价-级别 -->
+
+	<!-- 产品评价-内容 -->
+
+	<!-- 产品评价-日期 -->
+
+	<!-- 产品评价-标签 -->
+
+	<!-- 产品评价-型号 -->
+
+	<!-- 产品评价-评分 -->
+
+
+
+
+</site>

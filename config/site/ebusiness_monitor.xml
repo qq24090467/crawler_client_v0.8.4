@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<!-- 电商搜索站点公有配置  -->
+	<bean id="ebusiness_monitor_${site}" class="common.siteinfo.Siteinfo">
+		<property name="siteName" value="${siteName}" />
+		<property name="siteFlag" value="${siteFlag}" />
+		<property name="charset" value="${charset}" />
+		<property name="downInterval" value="${downInterval}" />
+		<property name="page" value="${page}" />
+		<property name="threadNum" value="${threadNum}" />
+		<!-- 站点入口url -->
+		<property name="url" value= "${accessUrl}" />
+		<!-- 站点的抽取组件，分为元数据、详细数据等类型 -->
+		<property name="commonComponent">
+			<map>
+				<entry key="META" value-ref="meta_${site}_ebusiness_monitor" />
+				<entry key="DATA" value-ref="data_${site}_ebusiness_monitor" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="meta_${site}_ebusiness_monitor" class="common.siteinfo.CommonComponent">
+		<property name="type" value="META" />
+		<property name="components">
+			<map>
+				<entry key="title">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="title" />
+						<property name="xpath" value="${title}" />
+						<property name="format" value="true" />
+						<property name="select" value="true" />
+					</bean>
+				</entry>
+				<entry key="url">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="url" />
+						<property name="xpath" value="${url}" />
+						<property name="prefix" value="${url_prefix}" />
+						<property name="postfix" value="${url_postfix}" />
+					</bean>
+				</entry>
+				<entry key="next">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="NEXTPAGE" />
+						<property name="name" value="next" />
+						<property name="xpath" value="${next}" />
+						<property name="prefix" value="${next_prefix}" />
+						<property name="postfix" value="${next_postfix}" />
+					</bean>
+				</entry>
+				<entry key="price">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="price" />
+						<property name="xpath" value="${price}" />
+						<property name="format" value="true" />
+						<property name="select" value="true" />
+					</bean>
+				</entry>
+				<entry key="transation">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="transation" />
+						<property name="xpath" value="${transation}" />
+						<property name="format" value="true" />
+						<property name="select" value="true" />
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	<bean id="data_${site}_ebusiness_monitor" class="common.siteinfo.CommonComponent">
+		<property name="type" value="DATA" />
+		<property name="components">
+			<map>
+				<!-- 品牌 -->
+				<entry key="name">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="name" />
+						<property name="xpath" value="${name}" />
+					</bean>
+				</entry>
+				<!-- 品牌 -->
+				<entry key="content">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="content" />
+						<property name="xpath" value="${content}" />
+					</bean>
+				</entry>
+				<!-- 品牌 -->
+				<entry key="brand">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="brand" />
+						<property name="xpath" value="${brand}" />
+					</bean>
+				</entry>
+				<!-- 台面宽度 -->
+				<entry key="width">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="width" />
+						<property name="xpath" value="${width}" />
+					</bean>
+				</entry>
+				<!-- 直径 -->
+				<entry key="diameter">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="diameter" />
+						<property name="xpath" value="${diameter}" />
+					</bean>
+				</entry>
+				<!-- 型号 -->
+				<entry key="model">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="model" />
+						<property name="xpath" value="${model}" />
+					</bean>
+				</entry>
+				<!-- 价格 -->
+				<entry key="price">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="price" />
+						<property name="xpath" value="${price}" />
+					</bean>
+				</entry>
+				<!-- 图片-info -->
+				<entry key="imgs_info">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="imgs_info" />
+						<property name="xpath" value="${imgs_info}" />
+					</bean>
+				</entry>
+				<!-- 图片-产品 -->
+				<entry key="imgs_product">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="imgs_product" />
+						<property name="xpath" value="${imgs_product}" />
+					</bean>
+				</entry>
+				<!-- 商品介绍-内容-->
+				<entry key="info_content">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="info_content" />
+						<property name="xpath" value="${info_content}" />
+					</bean>
+				</entry>
+				<!-- 商品介绍-商品码 -->
+				<entry key="info_code">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="info_code" />
+						<property name="xpath" value="${info_code}" />
+					</bean>
+				</entry>
+				<!-- 商品介绍-发布时间 -->
+				<entry key="info_pubtime">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="info_pubtime" />
+						<property name="xpath" value="${info_pubtime}" />
+					</bean>
+				</entry>
+				<!-- 商品介绍-类型 -->
+				<entry key="info_type">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="info_type" />
+						<property name="xpath" value="${info_type}" />
+					</bean>
+				</entry>
+				<!-- 规格参数 -->
+				<entry key="params">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="params" />
+						<property name="xpath" value="${params}" />
+					</bean>
+				</entry>
+				<!-- 包装清单 -->
+				<entry key="list">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="list" />
+						<property name="xpath" value="${list}" />
+					</bean>
+				</entry>
+				<!-- 产品卖家-名称 -->
+				<entry key="owner_name">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="owner_name" />
+						<property name="xpath" value="${owner_name}" />
+					</bean>
+				</entry>
+				<!-- 产品卖家-综合分-->
+				<entry key="owner_score">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="owner_score" />
+						<property name="xpath" value="${owner_score}" />
+					</bean>
+				</entry>
+				<!-- 产品卖家-商品评分-->
+				<entry key="owner_pscore">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="owner_pscore" />
+						<property name="xpath" value="${owner_pscore}" />
+					</bean>
+				</entry>
+				<!-- 产品卖家-服务评分-->
+				<entry key="owner_sscore">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="owner_sscore" />
+						<property name="xpath" value="${owner_sscore}" />
+					</bean>
+				</entry>				
+				<!-- 产品卖家-公司名-->
+				<entry key="owner_company">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="owner_company" />
+						<property name="xpath" value="${owner_company}" />
+					</bean>
+				</entry>	
+				<!-- 产品卖家-所在地-->
+				<entry key="owner_address">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="owner_address" />
+						<property name="xpath" value="${owner_address}" />
+					</bean>
+				</entry>	
+				<!-- 产品卖家-连接-->
+				<entry key="owner_url">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="owner_url" />
+						<property name="xpath" value="${owner_url}" />
+					</bean>
+				</entry>	
+				<!-- 产品评价-评论人 -->
+				<entry key="comment_person">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="comment_person" />
+						<property name="xpath" value="${comment_person}" />
+					</bean>
+				</entry>
+				<!-- 产品评价-级别 -->
+				<entry key="comment_level">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="comment_level" />
+						<property name="xpath" value="${comment_level}" />
+					</bean>
+				</entry>
+				<!-- 产品评价-内容 -->
+				<entry key="comment_info">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="comment_info" />
+						<property name="xpath" value="${comment_info}" />
+					</bean>
+				</entry>
+				<!-- 产品评价-日期 -->
+				<entry key="comment_pubtime">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="comment_pubtime" />
+						<property name="xpath" value="${comment_pubtime}" />
+					</bean>
+				</entry>
+				<!-- 产品评价-标签 -->
+				<entry key="comment_label">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="comment_label" />
+						<property name="xpath" value="${comment_label}" />
+					</bean>
+				</entry>
+				<!-- 产品评价-型号 -->
+				<entry key="comment_product">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="comment_product" />
+						<property name="xpath" value="${comment_product}" />
+					</bean>
+				</entry>
+				<!-- 产品评价-评分 -->
+				<entry key="comment_score">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="comment_score" />
+						<property name="xpath" value="${comment_score}" />
+					</bean>
+				</entry>
+
+				
+			</map>
+		</property>
+	</bean>
+	
+</beans>

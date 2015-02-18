@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<site>
+	<prop name="site" value="sougou" />
+	<prop name="siteName" value="sougou_blog_search" />
+	<prop name="siteFlag" value="6" />
+	<prop name="charset" value="utf-8" />
+	<prop name="downInterval" value="5" />
+	<prop name="page" value="2" />
+	<prop name="threadNum" value="1" />
+	<prop name="accessUrl" value="http://www.sogou.com/web?interation=196647&amp;chuidq=39&amp;sourceid=inttab_web&amp;query=&lt;keyword&gt;" />
+
+<!-- 列表页 -->
+	<prop name="title" value="//H3/A[@id]" />
+	<prop name="url" value="//H3/A[@id]/@href" />
+	<prop name="source" value="//DIV[@class='fb']/CITE" />
+	<prop name="next" value="//A[contains(.,'下一页')]/@href" />
+	<prop name="cache" value="//DIV[@class='fb']/A[contains(@id,'snap')]/@href" />
+	<prop name="pubtime" value="" />
+	<prop name="brief" value="]/DIV[@class='ft']" />
+	<prop name="author" value="]/DIV[@class='bloginfo']" />
+	<prop name="next_prefix" value="http://www.sogou.com/web" />
+</site>

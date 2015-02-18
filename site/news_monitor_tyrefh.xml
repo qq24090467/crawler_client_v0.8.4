@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<site>
+	<prop name="site" value="tyrefh" />
+	<prop name="siteName" value="tyrefh_news_monitor" />
+	<prop name="siteFlag" value="144" />
+	<prop name="charset" value="gb2312" />
+	<prop name="downInterval" value="5" />
+	<prop name="page" value="4" />
+	<prop name="threadNum" value="1" />
+	<prop name="accessUrl" value="" />
+
+	<!-- 列表页 -->
+	<prop name="title" value="//LI/A" />
+	<prop name="url" value="//LI/A/@href" />
+	<prop name="url_prefix" value="http://www.tyrefh.org/" />
+	<prop name="brief" value=""/>
+	<prop name="pubtime" value="//LI/SPAN" />
+
+	<prop name="next" value="" />
+	<prop name="next_prefix" value="" /> 
+
+	<!-- 内容页 -->
+
+	<prop name="content" value="//DIV[@class='rightcon']" />
+	<prop name="imgUrl" value="//DIV[@class='rightcon']//IMG/@src" />
+	<prop name="author" value="" />
+	
+	<prop name="originalSource" value="//DIV[@class='news_autro']" />
+	
+	
+	
+</site>

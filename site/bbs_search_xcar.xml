@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<site>
+	<prop name="site" value="xcar" />
+	<prop name="siteName" value="xcar_bbs_search" />
+	<prop name="siteFlag" value="181" />
+	<prop name="charset" value="utf-8" />
+	<prop name="downInterval" value="20" />
+	<prop name="page" value="200" />
+	<prop name="threadNum" value="1" />
+	<prop name="accessUrl" value="http://search.xcar.com.cn/search.php?c=5&k=&lt;keyword&gt;" />
+<!-- 列表页 -->
+	<prop name="title" value="//DL[@class='list_right']/DT/A/@title" />
+	<prop name="url" value="//DL[@class='list_right']/DT/A/@href" />
+	<prop name="next" value="//DIV[@class='article_page_bottom']/A[@class='page_down' and position() >1 ]/@href" />
+	<prop name="next_prefix" value="http://search.xcar.com.cn" />
+	
+	<prop name="author_lp" value="//DL[@class='list_right']/DD/EM[contains(@class,'author')]/A"/>
+	<prop name="pubtime_lp" value="//DL[@class='list_right']/DD/EM[1]"/>
+	<prop name="comment_count_lp" value="//DL[@class='list_right']/DD/EM[contains(.,'回复')]"/>
+	<prop name="click_count_lp" value="//DL[@class='list_right']/DD/EM[contains(.,'浏览')]"/>
+	<prop name="brief_lp" value="//DL[@class='list_right']/DD[@class='importatCon']"/>
+	<prop name="source_lp" value="//DL[@class='list_right']/DD/EM[contains(.,'来源')]"/>
+	
+<!-- 内容页 -->
+	<prop name="content" value="//DIV[@class='F_box_2' and position() = 1]//DIV[contains(@id,'message')]" />
+	<prop name="column" value="" />
+	<prop name="reply_count" value="" />
+	<prop name="click_count" value="" />
+	<prop name="img_url" value="" />
+	<prop name="source" value="" />
+	<prop name="pageTitle" value="" />
+	<prop name="reply_content" value="//DIV[contains(@id,'message')]" />
+	<prop name="reply_time" value="//DIV[contains(@style,'padding') and contains(text(),'发表于')]" />
+	<prop name="reply_name" value="//A[@class='bold' and @rel='nofollow']" />
+	<prop name="reply_next" value="//DIV[contains(@class,'page')]/A[@class='page_down']/@href" />
+	<prop name="reply_next_prefix" value="http://www.xcar.com.cn/bbs/" />
+</site>

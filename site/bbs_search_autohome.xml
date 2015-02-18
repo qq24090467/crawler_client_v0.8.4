@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<site>
+	<prop name="site" value="autohome" />
+	<prop name="siteName" value="autohome_bbs_search" />
+	<prop name="siteFlag" value="182" />
+	<prop name="charset" value="gb2312" />
+	<prop name="downInterval" value="20" />
+	<prop name="page" value="200" />
+	<prop name="threadNum" value="1" />
+	<prop name="accessUrl" value="http://sou.autohome.com.cn/luntan?q=&lt;keyword&gt;&entry=44&page=1&pvareaid=100509" />
+<!-- 列表页 -->
+	<prop name="title" value="//DIV/DL/DT/A" />
+	<prop name="url" value="//DIV/DL/DT/A/@href" />
+	<prop name="next" value="//DIV/A[@class='page-item-next']/@href" />
+	<prop name="next_prefix" value="http://sou.autohome.com.cn/luntan" />
+	
+	<prop name="author_lp" value="//DIV/DL/DD/SPAN[2]"/>
+	<prop name="pubtime_lp" value="//DIV/DL/DD/SPAN[4]"/>
+	<prop name="comment_count_lp" value="//DIV/DL/DD/SPAN[3]"/>
+	<prop name="click_count_lp" value=""/>
+	<prop name="brief_lp" value="//DIV/DL[@class='list-dl']/DD[1]"/>
+	<prop name="source_lp" value="//DIV/DL/DD/SPAN[1]"/>
+	
+<!-- 内容页 -->
+	<prop name="content" value="//DIV[@class='rconten']/DIV[@class='conttxt']" />
+	<prop name="column" value="" />
+	<prop name="reply_count" value="//DIV/SPAN/FONT[2]" />
+	<prop name="click_count" value="//DIV/SPAN/FONT[1]" />
+	<prop name="img_url" value="//DIV[@class='rconten']/DIV[@class='conttxt']/DIV/P/SPAN/IMG/@src" />
+	<prop name="source" value="" />
+	<prop name="pageTitle" value="" />
+	<prop name="reply_content" value="//DIV[@class='rconten']/DIV[contains(@class,'x-reply')]/DIV" />
+	<prop name="reply_time" value="//DIV[@id='maxwrap-reply']/DIV[@class='clearfix contstxt' and @pk]/DIV[@class='conright fl']/DIV/DIV[1]/SPAN[2]" />
+	<prop name="reply_name" value="//DIV[@id='maxwrap-reply']/DIV[@class='clearfix contstxt' and @pk]/DIV/UL[1]/LI[1]/A[1]/@title" />
+	<prop name="reply_next" value="//DIV[@class='pagearea fr']/DIV/A[contains(.,'下一页')]/@href" />
+	<prop name="reply_next_prefix" value="http://club.autohome.com.cn/bbs/" />
+</site>

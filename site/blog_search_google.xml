@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<site>
+	<prop name="site" value="google" />
+	<prop name="siteName" value="google_blog_search" />
+	<prop name="siteFlag" value="5" />
+	<prop name="agent" value="true" />
+	<prop name="charset" value="utf-8" />
+	<prop name="downInterval" value="30" />
+	<prop name="page" value="1000" />
+	<prop name="threadNum" value="5" />
+	<prop name="accessUrl" value="https://www.google.com/search?q=&lt;keyword&gt;&amp;newwindow=1&amp;tbm=blg&amp;ei=QGPGUtPYDI7nkgXJlYDADA&amp;sa=N&amp;gws_rd=ssl&amp;dpr=1&amp;start=0" />
+<!-- 列表页 -->
+<!-- //LI[@class='g']//H3[@class='r']/A |  //LI[@class='g']/OL/LI/A-->
+	<prop name="title" value="//LI[@class='g']//H3[@class='r']/A" />
+	<prop name="url" value="//LI[@class='g']//H3[@class='r']/A/@href" />
+	<prop name="source" value="//LI[@class='g']/DIV/DIV//CITE" />
+	<prop name="next" value="//A[contains(.,'Next')]/@href | //A[contains(.,'下一页')]/@href" />
+	<prop name="pubtime" value="]/DIV/DIV//SPAN[@class='f']" />
+	<prop name="author" value="]/DIV//DIV[contains(@class,'f')]/SPAN" />
+	<prop name="brief" value="//DIV/SPAN[@class='st']" />
+	<prop name="url_prefix" value="http://www.google.com" />
+	<prop name="next_prefix" value="http://www.google.com" />
+</site>

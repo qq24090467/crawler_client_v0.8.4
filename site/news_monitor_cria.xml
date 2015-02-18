@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<site>
+	<prop name="site" value="cria" />
+	<prop name="siteName" value="cria_news_monitor" />
+	<prop name="siteFlag" value="143" />
+	<prop name="charset" value="utf-8" />
+	<prop name="downInterval" value="5" />
+	<prop name="page" value="2" />
+	<prop name="threadNum" value="1" />
+	<prop name="accessUrl" value="" />
+
+	<!-- 列表页 -->
+	<prop name="title" value="//UL[@class='news_list_div1_liebiao_1']/LI/A" />
+	<prop name="url" value="//UL[@class='news_list_div1_liebiao_1']/LI/A/@href" />
+	<prop name="url_prefix" value="http://news.cria.org.cn" />
+	<prop name="brief" value=""/>
+	<prop name="pubtime" value="//UL[@class='news_list_div1_liebiao_1']/LI/SPAN" />
+
+	<prop name="next" value="//DIV[@id='PagerSliding']/A[contains(.,'>') and not(contains(.,'|'))]/@href" />
+	<prop name="next_prefix" value="http://news.cria.org.cn" /> 
+
+	<!-- 内容页 -->
+
+	<prop name="content" value="//DIV[@class='news_nei_p']" />
+	<prop name="imgUrl" value="//DIV[@class='news_nei_p']/DIV/IMG/@src" />
+	<prop name="author" value="" />
+	
+	<prop name="originalSource" value="//DIV[@class='news_nei_p']/P[contains(.,'来源')]" />
+	
+	
+	
+</site>

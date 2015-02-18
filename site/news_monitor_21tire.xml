@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<site>
+	<prop name="site" value="21tire" />
+	<prop name="siteName" value="21tire_news_monitor" />
+	<prop name="siteFlag" value="10" />
+	<prop name="charset" value="utf-8" />
+	<prop name="downInterval" value="5" />
+	<prop name="page" value="222" />
+	<prop name="threadNum" value="5" />
+	<prop name="accessUrl" value="" />
+
+	<!-- 列表页 -->
+	<prop name="title" value="//DIV[@class='title']/H4" />
+	<prop name="url" value="//DIV[@class='title']/H4/A/@href" />
+	<prop name="brief" value="//DIV[@class='info']"/>
+	
+	<prop name="pubtime" value="//DIV[@class='title']/SPAN" />
+	<prop name="next" value="" />
+
+	<!-- 内容页 -->
+
+	<prop name="content" value="//DIV[@class='art-content']" />
+	<prop name="author" value="" />
+	
+	<prop name="originalSource" value="" />
+</site>

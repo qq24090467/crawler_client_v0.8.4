@@ -1,0 +1,1 @@
+java -Xmx1024M -jar crawler.jar

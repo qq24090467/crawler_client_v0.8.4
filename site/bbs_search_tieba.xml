@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<site>
+	<prop name="site" value="tieba" />
+	<prop name="siteName" value="tieba_bbs_search" />
+	<prop name="siteFlag" value="4" />
+	<prop name="charset" value="gbk" />
+	<!-- 
+	<prop name="downInterval" value="25" />
+	<prop name="page" value="100" />
+	<prop name="threadNum" value="3" />
+	-->
+	
+	<prop name="downInterval" value="3" />
+	<prop name="page" value="2" />
+	<prop name="threadNum" value="1" />
+	
+	<prop name="accessUrl" value="http://tieba.baidu.com/f/search/res?isnew=1&amp;kw=&amp;qw=&lt;keyword&gt;&amp;rn=10&amp;un=&amp;only_thread=1&amp;sm=1&amp;sd=&amp;ed=&amp;pn=1" />
+<!-- 列表页 -->
+	<prop name="title" value="//DIV[@class='s_post']/SPAN[@class='p_title']/A" />
+	<prop name="url" value="//DIV[@class='s_post']/SPAN[@class='p_title']/A/@href" />
+	<prop name="url_prefix" value="http://tieba.baidu.com" />
+	<prop name="next" value="//A[contains(.,'下一页')]/@href" />
+	<prop name="next_prefix" value="http://tieba.baidu.com" />
+<!-- 内容页 -->
+	<prop name="author" value="//DIV[@class='p_postlist']/DIV[1]/DIV[@class='d_author']/UL/LI[@class='d_name']/A" />
+	<prop name="pubtime" value="//UL/LI/SPAN[@class='j_reply_data']" />
+	<prop name="content" value="//DIV[@class='p_postlist']/DIV[1]/DIV/DIV[contains(@class,'p_content')]" />
+	<prop name="column" value="//A[@id='tab_forumname']/@title" />
+	<prop name="reply_count" value="//UL[@class='l_posts_num']/LI[@class='l_reply_num' and contains(.,'回复')]" />
+	<prop name="click_count" value="" />
+	<prop name="img_url" value="//DIV[@class='p_postlist']//DIV/IMG/@src" />
+	<prop name="source" value="" />
+	<prop name="pageTitle" value="//H1" />
+	<prop name="reply_content" value="//DIV[@class='p_postlist']/DIV[position()&gt;1]/DIV[contains(@class,'d_post_content_main')]/DIV[contains(@class, 'content')]" />
+	<prop name="reply_time" value="//DIV[@class='p_postlist']/DIV[position()&gt;1]/@data-field" />
+	<prop name="reply_name" value="//DIV[@class='p_postlist']/DIV[position()&gt;1]/DIV[@class='d_author']/UL/LI[@class='d_name']/A" />
+	<prop name="reply_next" value="//A[contains(.,'下一页')]/@href" />
+	<prop name="reply_next_prefix" value="" />
+</site>

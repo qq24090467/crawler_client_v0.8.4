@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<site>
+	<prop name="site" value="cninfo" />
+	<prop name="siteName" value="cninfo_company_report_search" />
+	<prop name="siteFlag" value="121" />
+	<prop name="charset" value="gb2312" />
+	<prop name="downInterval" value="20" />
+	<prop name="page" value="1" />
+	<prop name="threadNum" value="1" />
+	<prop name="accessUrl"
+		value="http://www.cninfo.com.cn/disclosure/fulltext/stocks/fulltext1y/cninfo/&lt;keyword&gt;.js" />
+	<!-- http://www.cninfo.com.cn//disclosure/fulltext/stocks/hkmblatest/00235.js?ver=201412161720 -->
+
+	<!-- 列表页 -->
+	<prop name="title" value="" />
+	<prop name="url" value="" />
+
+	<prop name="pubtime" value="" />
+
+	<!-- 内容页 -->
+	
+
+
+</site>

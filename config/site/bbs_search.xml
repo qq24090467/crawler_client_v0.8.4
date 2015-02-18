@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<!-- BBS搜索站点公有配置  -->
+	<bean id="bbs_search_${site}" class="common.siteinfo.Siteinfo">
+		<property name="siteName" value="${siteName}" />
+		<property name="siteFlag" value="${siteFlag}" />
+		<property name="charset" value="${charset}" />
+		<property name="downInterval" value="${downInterval}" />
+		<property name="page" value="${page}" />
+		<property name="threadNum" value="${threadNum}" />
+		<property name="agent" value="${agent}" />
+		<property name="login" value="${login}" />
+		<!-- 站点入口url -->
+		<property name="url" value= "${accessUrl}" />
+		<!-- 站点的抽取组件，分为元数据、详细数据等类型 -->
+		<property name="commonComponent">
+			<map>
+				<entry key="META" value-ref="meta_${site}_bbs_search" />
+				<entry key="DATA" value-ref="data_${site}_bbs_search" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="meta_${site}_bbs_search" class="common.siteinfo.CommonComponent">
+		<property name="type" value="META" />
+		<property name="components">
+			<map>
+				<entry key="title">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="title" />
+						<property name="xpath" value="${title}" />
+						<property name="format" value="true" />
+						<property name="select" value="true" />
+					</bean>
+				</entry>
+				<entry key="url">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="url" />
+						<property name="xpath" value="${url}" />
+						<property name="prefix" value="${url_prefix}" />
+						<property name="postfix" value="${url_postfix}" />
+					</bean>
+				</entry>
+				<entry key="next">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="NEXTPAGE" />
+						<property name="name" value="next" />
+						<property name="xpath" value="${next}" />
+						<property name="prefix" value="${next_prefix}" />
+						<property name="postfix" value="${next_postfix}" />
+					</bean>
+				</entry>
+				<entry key="author_lp">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="author_lp" />
+						<property name="xpath" value="${author_lp}" />
+					</bean>
+				</entry>
+				<entry key="pubtime_lp">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="pubtime_lp" />
+						<property name="xpath" value="${pubtime_lp}" />
+					</bean>
+				</entry>
+				<!-- 评论数 -->
+				<entry key="comment_count_lp">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="comment_count_lp" />
+						<property name="xpath" value="${comment_count_lp}" />
+					</bean>
+				</entry>
+				<!-- 点击数 -->
+				<entry key="click_count_lp">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="click_count_lp" />
+						<property name="xpath" value="${click_count_lp}" />
+					</bean>
+				</entry>
+				<!-- 摘要 -->
+				<entry key="brief_lp">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="brief_lp" />
+						<property name="xpath" value="${brief_lp}" />
+					</bean>
+				</entry>
+				<!-- 来源 -->
+				<entry key="source_lp">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="source_lp" />
+						<property name="xpath" value="${source_lp}" />
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	<bean id="data_${site}_bbs_search" class="common.siteinfo.CommonComponent">
+		<property name="type" value="DATA" />
+		<property name="components">
+			<map>
+				<!-- 标题 -->
+				<entry key="pageTitle">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="FIXED" />
+						<property name="name" value="title" />
+						<property name="xpath" value="${pageTitle}" />
+					</bean>
+				</entry>
+				<!-- 作者 -->
+				<entry key="author">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="author" />
+						<property name="xpath" value="${author}" />
+					</bean>
+				</entry>
+				<!-- 发布时间 -->
+				<entry key="pubtime">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="pubtime" />
+						<property name="xpath" value="${pubtime}" />
+					</bean>
+				</entry>
+				<!-- 内容 -->
+				<entry key="content">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="content" />
+						<property name="xpath" value="${content}" />
+					</bean>
+				</entry>
+				<!-- 发布源 -->
+				<entry key="source">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="source" />
+						<property name="xpath" value="${source}" />
+					</bean>
+				</entry>
+				<!-- 评论数 -->
+				<entry key="reply_count">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="reply_count" />
+						<property name="xpath" value="${reply_count}" />
+					</bean>
+				</entry>
+				<!-- 点击数 -->
+				<entry key="click_count">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="click_count" />
+						<property name="xpath" value="${click_count}" />
+					</bean>
+				</entry>
+				<!-- 板块 -->
+				<entry key="column">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="column" />
+						<property name="xpath" value="${column}" />
+					</bean>
+				</entry>
+				<!-- 图片链接 -->
+				<entry key="img_url">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="img_url" />
+						<property name="xpath" value="${img_url}" />
+					</bean>
+				</entry>
+				<!-- 评论内容 -->
+				<entry key="reply_content">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="reply_content" />
+						<property name="xpath" value="${reply_content}" />
+					</bean>
+				</entry>
+				<!-- 评论时间 -->
+				<entry key="reply_time">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="reply_time" />
+						<property name="xpath" value="${reply_time}" />
+					</bean>
+				</entry>
+				<!-- 评论者 -->
+				<entry key="reply_name">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="reply_name" />
+						<property name="xpath" value="${reply_name}" />
+					</bean>
+				</entry>
+				<!-- 下一页评论 -->
+				<entry key="reply_next">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="reply_next" />
+						<property name="xpath" value="${reply_next}" />
+						<property name="prefix" value="${reply_next_prefix}" />
+						<property name="postfix" value="${reply_next_postfix}" />
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+</beans>

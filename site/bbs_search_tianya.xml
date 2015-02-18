@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<site>
+	<prop name="site" value="tianya" />
+	<prop name="siteName" value="tianya_bbs_search" />
+	<prop name="siteFlag" value="3" />
+	<prop name="charset" value="utf-8" />
+	<prop name="downInterval" value="12" />
+	<prop name="page" value="100" />
+	<prop name="threadNum" value="8" />
+	<prop name="accessUrl" value="http://search.tianya.cn/bbs?s=4&amp;q=&lt;keyword&gt;&amp;pn=1" />
+<!-- 列表页 -->
+	<prop name="title" value="//DIV[@class='searchListOne']/UL/LI/DIV/H3/A" />
+	<prop name="url" value="//DIV[@class='searchListOne']/UL/LI/DIV/H3/A/@href" />
+	<prop name="next" value="//A[contains(.,'下一页')]/@href" />
+
+<!-- 内容页 -->
+	<prop name="author" value="//DIV[@id='post_head']/DIV/DIV[@class='atl-info']/SPAN[contains(.,'楼主')]" />
+	<prop name="pubtime" value="//DIV[@id='post_head']/DIV/DIV[@class='atl-info']/SPAN[contains(.,'时间')]" />
+	<prop name="content" value="//DIV[@class='atl-item']/DIV/DIV/DIV[@class='bbs-content clearfix']" />
+	<prop name="source" value="//DIV[@id='post_head']/DIV/DIV[@class='atl-info']/SPAN[contains(.,'来自')]" />
+	<prop name="reply_count" value="//DIV[@id='post_head']/DIV/DIV[@class='atl-info']/SPAN[contains(.,'回复')]" />
+	<prop name="click_count" value="//DIV[@id='post_head']/DIV/DIV[@class='atl-info']/SPAN[contains(.,'点击')]" />
+	<prop name="column" value="//P[@class='crumbs']/EM/A" />
+	<prop name="img_url" value="//DIV[@class='atl-item']/DIV/DIV/DIV[@class='bbs-content clearfix']/IMG/@original" />
+	
+	<prop name="pageTitle" value="//H1" />
+	<prop name="reply_content" value="//DIV[@class='atl-main']/DIV[@id]/DIV/DIV/DIV[@class='bbs-content']" />
+	<prop name="reply_time" value="//DIV[@class='atl-main']/DIV[@id]/DIV[@id]/DIV/SPAN[contains(.,'时间：')]" />
+	<prop name="reply_name" value="//DIV[@class='atl-main']/DIV[@id]/DIV[@id]/DIV[@class='atl-info']/SPAN[1]" />
+	<prop name="reply_next" value="//A[contains(.,'下页')]/@href" />
+	<prop name="reply_next_prefix" value="http://bbs.tianya.cn" />
+</site>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<bean id="systemconfig" class="common.system.Systemconfig"
+		init-method="initial">
+
+		<property name="readConfigType" value="${readConfigType}" />
+		<property name="keywords" value="${keywords}" />
+		<property name="createFile" value="${creatFile}" />
+		<property name="dbFactory" ref="dbService" />
+		<property name="filePath" value="${filePath}" />
+		<property name="agentIp" value="${agentip}" />
+		<property name="agentPort" value="${agentport}" />
+		<property name="extractor" ref="extractor" />
+		<property name="seedFilter" ref="seedFilter" />
+		<property name="upThreadNum" value="${upThreadNum}" />
+		<property name="remote" value="${remote}" />
+		<property name="delLoaclFile" value="${delLoaclFile}" />
+
+		<property name="localAddress" value="${localAddress}" />
+		<property name="rmiName" value="${rmiName}" />
+		<property name="rmiPort" value="${rmiPort}" />
+		<property name="serverAddress" value="${serverAddress}" />
+		<property name="crawlerType" value="${crawler_type}" />
+		<property name="distribute" value="${distribute}" />
+		<property name="clientIndex" value="${client_index}" />
+
+		<property name="siteExtractClass">
+			<map>
+				<entry key="baidu_news_search"
+					value="common.extractor.xpath.news.search.sub.BaiduExtractor" />
+
+				<entry key="google_news_search"
+					value="common.extractor.xpath.news.search.sub.GoogleExtractor" />
+
+
+				<entry key="21tire_news_monitor"
+					value="common.extractor.xpath.news.monitor.sub.Tire21MonitorExtractor" />
+				<entry key="tirechina_news_monitor"
+					value="common.extractor.xpath.news.monitor.sub.TirechinaMonitorExtractor" />
+				<entry key="tireworld_news_monitor"
+					value="common.extractor.xpath.news.monitor.sub.TireworldMonitorExtractor" />
+				<entry key="hcrubber_news_monitor"
+					value="common.extractor.xpath.news.monitor.sub.HcrubberMonitorExtractor" />
+				<entry key="cvce_news_monitor"
+					value="common.extractor.xpath.news.monitor.sub.CvceMonitorExtractor" />
+				<entry key="cria_news_monitor"
+					value="common.extractor.xpath.news.monitor.sub.CriaMonitorExtractor" />
+				<entry key="tyrefh_news_monitor"
+					value="common.extractor.xpath.news.monitor.sub.TyrefhMonitorExtractor" />
+
+
+
+				<entry key="tianya_bbs_search"
+					value="common.extractor.xpath.bbs.search.sub.TianyaExtractor" />
+				<entry key="tieba_bbs_search"
+					value="common.extractor.xpath.bbs.search.sub.TiebaExtractor" />
+				<entry key="xcar_bbs_search"
+					value="common.extractor.xpath.bbs.search.sub.XcarExtractor" />
+				<entry key="autohome_bbs_search"
+					value="common.extractor.xpath.bbs.search.sub.AutohomeExtractor" />
+				<entry key="tieba_bbs_monitor"
+					value="common.extractor.xpath.bbs.monitor.sub.TiebaExtractor" />
+
+				<entry key="google_blog_search"
+					value="common.extractor.xpath.blog.search.sub.GoogleExtractor" />
+				<entry key="sougou_blog_search"
+					value="common.extractor.xpath.blog.search.sub.SougouExtractor" />
+
+				<entry key="renren_weibo_search"
+					value="common.extractor.xpath.weibo.search.sub.RenrenExtractor" />
+				<entry key="sina_weibo_search"
+					value="common.extractor.xpath.weibo.search.sub.SinaExtractor" />
+
+				<entry key="sina_weibo_monitor"
+					value="common.extractor.xpath.weibo.monitor.sub.SinaExtractor" />
+
+				<entry key="jd_ebusiness_search"
+					value="common.extractor.xpath.ebusiness.search.sub.JDExtractor" />
+				<entry key="jd_ebusiness_monitor"
+					value="common.extractor.xpath.ebusiness.monitor.sub.JDExtractor" />
+
+				<entry key="taobao_ebusiness_search"
+					value="common.extractor.xpath.ebusiness.search.sub.TaobaoExtractor" />
+				<entry key="taobao_ebusiness_monitor"
+					value="common.extractor.xpath.ebusiness.monitor.sub.TaobaoExtractor" />
+			</map>
+		</property>
+
+
+		<property name="siteHttpClass">
+			<map>
+				<entry key="google_news_search" value="common.http.sub.GoogleHttpProcess" />
+				<entry key="google_blog_search" value="common.http.sub.GoogleHttpProcess" />
+				<entry key="sina_weibo_search" value="common.http.sub.SinaHttpProcess" />
+				<entry key="sina_weibo_monitor" value="common.http.sub.SinaHttpProcess" />
+				<entry key="tieba_bbs_monitor" value="common.http.sub.TiebaHttpProcess" />
+				<entry key="jd_ebusiness_search" value="common.http.sub.JdHttpProcess" />
+			</map>
+		</property>
+
+	</bean>
+
+	<bean id="extractor" class="common.util.HtmlExtractor">
+		<property name="removeTags" value="${remove_tags}" />
+		<property name="tableTags" value="${table_tags}" />
+		<property name="imageType" value="${image_type}" />
+		<property name="downloadImg" value="${download_img}" />
+		<property name="positiveRatios" value="${positive_ratios}" />
+		<property name="imgHeight" value="${img_min_height}" />
+		<property name="imgWidth" value="${img_min_width}" />
+		<property name="imgSize" value="${img_local_size}" />
+		<property name="invalidBeg" value="${invalid_beg}" />
+	</bean>
+
+	<!-- <bean id="dbService" class="common.service.mysql.UnitMysqlService"> 
+		<property name="newsMysqlService" ref="newsMysqlService" /> <property name="bbsMysqlService" 
+		ref="bbsMysqlService" /> <property name="blogMysqlService" ref="blogMysqlService" 
+		/> <property name="weiboMysqlService" ref="weiboMysqlService" /> </bean> 
+		<bean id="newsMysqlService" class="common.service.mysql.NewsMysqlService"> 
+		<property name="jdbcTemplate" ref="jdbcTemplate" /> </bean> <bean id="bbsMysqlService" 
+		class="common.service.mysql.BbsMysqlService"> <property name="jdbcTemplate" 
+		ref="jdbcTemplate" /> </bean> <bean id="blogMysqlService" class="common.service.mysql.BlogMysqlService"> 
+		<property name="jdbcTemplate" ref="jdbcTemplate" /> </bean> <bean id="weiboMysqlService" 
+		class="common.service.mysql.WeiboMysqlService"> <property name="jdbcTemplate" 
+		ref="jdbcTemplate" /> </bean> -->
+	<bean id="dbService" class="common.service.oracle.UnitOracleService">
+		<property name="newsOracleService" ref="newsOracleService" />
+		<property name="weixinOracleService" ref="weixinOracleService" />
+		<property name="bbsOracleService" ref="bbsOracleService" />
+		<property name="blogOracleService" ref="blogOracleService" />
+		<property name="weiboOracleService" ref="weiboOracleService" />
+	<!-- 	<property name="ebusinessHbaseService" ref="ebusinessHbaseService" /> -->
+		<property name="reportOracleService" ref="reportOracleService" />
+	</bean>
+
+	<bean id="newsOracleService" class="common.service.oracle.NewsOracleService">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+	<bean id="weixinOracleService" class="common.service.oracle.WeixinOracleService">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+	<bean id="bbsOracleService" class="common.service.oracle.BbsOracleService">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+	<bean id="blogOracleService" class="common.service.oracle.BlogOracleService">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+	<bean id="weiboOracleService" class="common.service.oracle.WeiboOracleService">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+<!-- 	<bean id="ebusinessHbaseService" class="common.service.hbase.EbusinessHbaseService">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean> -->
+	<bean id="reportOracleService" class="common.service.oracle.ReportOracleService">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+	<!-- <bean id="dbService" class="common.service.hbase.UnitHbaseService"> 
+		<property name="service" ref="service" /> </bean> <bean id="service" class="common.service.hbase.EbusinessHbaseService"> 
+		<property name="jdbcTemplate" ref="jdbcTemplate" /> </bean> -->
+
+	<bean id="seedFilter" class="common.filter.SimpleSeedFilter" />
+
+</beans>

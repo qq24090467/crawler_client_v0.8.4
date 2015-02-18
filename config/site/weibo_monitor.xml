@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<!-- sina站点配置  -->
+	<bean id="weibo_monitor_${site}" class="common.siteinfo.Siteinfo">
+		<property name="siteName" value="${siteName}" />
+		<property name="siteFlag" value="${siteFlag}" />
+		<property name="charset" value="${charset}" />
+		<property name="downInterval" value="${downInterval}" />
+		<property name="page" value="${page}" />
+		<property name="threadNum" value="${threadNum}" />
+		<property name="agent" value="${agent}" />
+		<property name="login" value="${login}" />
+		<!-- 站点入口url -->
+		<property name="url" value= "${accessUrl}" />
+		<!-- 站点的抽取组件，分为元数据、详细数据等类型 -->
+		<property name="commonComponent">
+			<map>
+				<entry key="USER" value-ref="user_${site}_weibo_monitor" />
+				<entry key="USERINFO" value-ref="userinfo_${site}_weibo_monitor" />
+				<entry key="FANS" value-ref="fans_${site}_weibo_monitor" />
+				<entry key="FOLLOW" value-ref="fans_${site}_weibo_monitor" />
+				<entry key="DATA" value-ref="data_${site}_weibo_monitor" />
+				<entry key="COMM" value-ref="comment_${site}_weibo_monitor" />
+				<entry key="RTT" value-ref="rtt_${site}_weibo_monitor" />
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="data_${site}_weibo_monitor" class="common.siteinfo.CommonComponent">
+		<!-- 组件类型 -->
+		<property name="type" value="USER" />
+		<!-- 组件包含的属性 -->
+		<property name="components">
+			<map>
+				<entry key="weibo_content">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="weibo_content" />
+						<property name="xpath" value="${weibo_content}" />
+					</bean>
+				</entry>
+				<entry key="weibo_rtt_content">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="weibo_rtt_content" />
+						<property name="xpath" value="${weibo_rtt_content}" />
+					</bean>
+				</entry>
+				<entry key="weibo_content_url">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="weibo_content_url" />
+						<property name="xpath" value="${weibo_content_url}" />
+						<property name="prefix" value="${weibo_prefix}" />
+					</bean>
+				</entry>
+				<entry key="weibo_comment_num">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="weibo_comment_num" />
+						<property name="xpath" value="${weibo_comment_num}" />
+					</bean>
+				</entry>
+				<entry key="weibo_rtt_num">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="weibo_rtt_num" />
+						<property name="xpath" value="${weibo_rtt_num}" />
+					</bean>
+				</entry>
+				<entry key="weibo_img_url">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="weibo_img_url" />
+						<property name="xpath" value="${weibo_img_url}" />
+					</bean>
+				</entry>
+				<entry key="weibo_pubtime">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="weibo_pubtime" />
+						<property name="xpath" value="${weibo_pubtime}" />
+					</bean>
+				</entry>
+				<entry key="weibo_source">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="weibo_source" />
+						<property name="xpath" value="${weibo_source}" />
+					</bean>
+				</entry>
+				<entry key="weibo_mid">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="weibo_mid" />
+						<property name="xpath" value="${weibo_mid}" />
+					</bean>
+				</entry>
+				<entry key="weibo_next">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="NEXTPAGE" />
+						<property name="name" value="weibo_next" />
+						<property name="xpath" value="${weibo_next}" />
+						<property name="prefix" value="${weibo_next_prefix}" />
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="user_${site}_weibo_monitor" class="common.siteinfo.CommonComponent">
+		<!-- 组件类型 -->
+		<property name="type" value="USER" />
+		<!-- 组件包含的属性 -->
+		<property name="components">
+			<map>
+				<entry key="author">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="author" />
+						<property name="xpath" value="${author}" />
+					</bean>
+				</entry>
+				<entry key="author_id">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="author_id" />
+						<property name="xpath" value="${author_id}" />
+					</bean>
+				</entry>
+				<!-- URL -->
+				<entry key="author_url">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="author_url" />
+						<property name="xpath" value="${author_url}" />
+					</bean>
+				</entry>
+				<entry key="author_img">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="author_img" />
+						<property name="xpath" value="${author_img}" />
+					</bean>
+				</entry>
+				<!-- 摘要 -->
+				<entry key="content">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="content" />
+						<property name="xpath" value="${content}" />
+					</bean>
+				</entry>
+				<entry key="certify">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="certify" />
+						<property name="xpath" value="${certify}" />
+					</bean>
+				</entry>
+				<entry key="address">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="certify" />
+						<property name="xpath" value="${address}" />
+					</bean>
+				</entry>
+				<entry key="tag">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="tag" />
+						<property name="xpath" value="${tag}" />
+					</bean>
+				</entry>
+				<entry key="sex">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="sex" />
+						<property name="xpath" value="${sex}" />
+					</bean>
+				</entry>
+				<entry key="fans_num">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="fans_num" />
+						<property name="xpath" value="${fans_num}" />
+					</bean>
+				</entry>
+				<entry key="attent_num">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="attent_num" />
+						<property name="xpath" value="${attent_num}" />
+					</bean>
+				</entry>
+				<entry key="weibo_num">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="weibo_num" />
+						<property name="xpath" value="${weibo_num}" />
+					</bean>
+				</entry>
+				<entry key="fans_url">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="fans_url" />
+						<property name="xpath" value="${fans_url}" />
+						<property name="prefix" value="${user_prefix}" />
+					</bean>
+				</entry>
+				<entry key="follow_url">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="follow_url" />
+						<property name="xpath" value="${follow_url}" />
+						<property name="prefix" value="${user_prefix}" />
+					</bean>
+				</entry>
+				<entry key="weibo_url">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="weibo_url" />
+						<property name="xpath" value="${weibo_url}" />
+						<property name="prefix" value="${user_prefix}" />
+					</bean>
+				</entry>
+				<entry key="info_url">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="info_url" />
+						<property name="xpath" value="${info_url}" />
+						<property name="prefix" value="${user_prefix}" />
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="userinfo_${site}_weibo_monitor" class="common.siteinfo.CommonComponent">
+		<!-- 组件类型 -->
+		<property name="type" value="USERINFO" />
+		<!-- 组件包含的属性 -->
+		<property name="components">
+			<map>
+				<entry key="nick">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="nick" />
+						<property name="xpath" value="${nick}" />
+					</bean>
+				</entry>
+				<entry key="birth">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="birth" />
+						<property name="xpath" value="${birth}" />
+					</bean>
+				</entry>
+				<entry key="company">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="company" />
+						<property name="xpath" value="${company}" />
+					</bean>
+				</entry>
+				<entry key="regist_time">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="regist_time" />
+						<property name="xpath" value="${regist_time}" />
+					</bean>
+				</entry>
+				<entry key="concact">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="concact" />
+						<property name="xpath" value="${concact}" />
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="fans_${site}_weibo_monitor" class="common.siteinfo.CommonComponent">
+		<!-- 组件类型 -->
+		<property name="type" value="USERINFO" />
+		<!-- 组件包含的属性 -->
+		<property name="components">
+			<map>
+				<entry key="fans_author_url">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="fans_author_url" />
+						<property name="xpath" value="${fans_author_url}" />
+						<property name="prefix" value="${fans_prefix}" />
+					</bean>
+				</entry>
+				<entry key="fans_author">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="fans_author" />
+						<property name="xpath" value="${fans_author}" />
+					</bean>
+				</entry>
+				<entry key="fans_author_img">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="fans_author_img" />
+						<property name="xpath" value="${fans_author_img}" />
+					</bean>
+				</entry>
+				<entry key="fans_address">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="fans_address" />
+						<property name="xpath" value="${fans_address}" />
+					</bean>
+				</entry>
+				<entry key="fans_attent_num">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="fans_attent_num" />
+						<property name="xpath" value="${fans_attent_num}" />
+					</bean>
+				</entry>
+				<entry key="fans_fans_num">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="fans_fans_num" />
+						<property name="xpath" value="${fans_fans_num}" />
+					</bean>
+				</entry>
+				<entry key="fans_weibo_num">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="fans_weibo_num" />
+						<property name="xpath" value="${fans_weibo_num}" />
+					</bean>
+				</entry>
+				<entry key="fans_follow_url">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="fans_follow_url" />
+						<property name="xpath" value="${fans_follow_url}" />
+						<property name="prefix" value="${fans_prefix}" />
+					</bean>
+				</entry>
+				
+				<entry key="fans_fans_url">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="fans_fans_url" />
+						<property name="xpath" value="${fans_fans_url}" />
+						<property name="prefix" value="${fans_prefix}" />
+					</bean>
+				</entry>
+				<entry key="fans_weibo_url">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="fans_weibo_url" />
+						<property name="xpath" value="${fans_weibo_url}" />
+						<property name="prefix" value="${fans_prefix}" />
+					</bean>
+				</entry>
+				<entry key="fans_sex">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="fans_sex" />
+						<property name="xpath" value="${fans_sex}" />
+					</bean>
+				</entry>
+				<entry key="fans_certify">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="fans_certify" />
+						<property name="xpath" value="${fans_certify}" />
+					</bean>
+				</entry>
+				<entry key="fans_next">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="NEXTPAGE" />
+						<property name="name" value="fans_next" />
+						<property name="xpath" value="${fans_next}" />
+						<property name="prefix" value="${fans_next_prefix}" />
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="comment_${site}_weibo_monitor" class="common.siteinfo.CommonComponent">
+		<!-- 组件类型 -->
+		<property name="type" value="COMM" />
+		<!-- 组件包含的属性 -->
+		<property name="components">
+			<map>
+				<entry key="comment_author_url">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="comment_author_url" />
+						<property name="xpath" value="${comment_author_url}" />
+						<property name="prefix" value="${comment_prefix}" />
+					</bean>
+				</entry>
+				<entry key="comment_author">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="comment_author" />
+						<property name="xpath" value="${comment_author}" />
+					</bean>
+				</entry>
+				<entry key="comment_author_img">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="comment_author_img" />
+						<property name="xpath" value="${comment_author_img}" />
+					</bean>
+				</entry>
+				<entry key="comment_content">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="comment_content" />
+						<property name="xpath" value="${comment_content}" />
+					</bean>
+				</entry>
+				<entry key="comment_time">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="comment_time" />
+						<property name="xpath" value="${comment_time}" />
+					</bean>
+				</entry>
+				<entry key="comment_uid">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="comment_uid" />
+						<property name="xpath" value="${comment_uid}" />
+					</bean>
+				</entry>
+				<entry key="comment_next">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="NEXTPAGE" />
+						<property name="name" value="comment_next" />
+						<property name="xpath" value="${comment_next}" />
+						<property name="prefix" value="${comment_next_prefix}" />
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="rtt_${site}_weibo_monitor" class="common.siteinfo.CommonComponent">
+		<!-- 组件类型 -->
+		<property name="type" value="RTT" />
+		<!-- 组件包含的属性 -->
+		<property name="components">
+			<map>
+				<entry key="rtt_author_url">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="rtt_author_url" />
+						<property name="xpath" value="${rtt_author_url}" />
+						<property name="prefix" value="${rtt_prefix}" />
+					</bean>
+				</entry>
+				<entry key="rtt_author">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="rtt_author" />
+						<property name="xpath" value="${rtt_author}" />
+					</bean>
+				</entry>
+				<entry key="rtt_author_img">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="rtt_author_img" />
+						<property name="xpath" value="${rtt_author_img}" />
+					</bean>
+				</entry>
+				<entry key="rtt_content">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="rtt_content" />
+						<property name="xpath" value="${rtt_content}" />
+					</bean>
+				</entry>
+				<entry key="rtt_time">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="rtt_time" />
+						<property name="xpath" value="${rtt_time}" />
+					</bean>
+				</entry>
+				<entry key="rtt_url">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="rtt_url" />
+						<property name="xpath" value="${rtt_url}" />
+						<property name="prefix" value="${rtt_prefix}" />
+					</bean>
+				</entry>
+				<entry key="rtt_uid">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="rtt_uid" />
+						<property name="xpath" value="${rtt_uid}" />
+					</bean>
+				</entry>
+				<entry key="rtt_mid">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="XPATH" />
+						<property name="name" value="rtt_mid" />
+						<property name="xpath" value="${rtt_mid}" />
+					</bean>
+				</entry>
+				<entry key="rtt_next">
+					<bean class="common.siteinfo.Component">
+						<property name="type" value="NEXTPAGE" />
+						<property name="name" value="rtt_next" />
+						<property name="xpath" value="${rtt_next}" />
+						<property name="prefix" value="${rtt_next_prefix}" />
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+</beans>

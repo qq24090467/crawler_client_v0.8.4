@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<site>
+	<prop name="site" value="sina" />
+	<prop name="siteName" value="sina_weibo_search" />
+	<prop name="siteFlag" value="8" />
+	<prop name="charset" value="utf-8" />
+	<prop name="downInterval" value="35" />
+	<prop name="page" value="20" />
+	<prop name="threadNum" value="1" />
+	<prop name="login" value="true" />
+	<!-- 站点入口url -->
+	<prop name="accessUrl" value= "http://s.weibo.com/wb/&lt;keyword&gt;&amp;page=1" />
+<!-- 列表页 -->
+	<!-- DIV[@node-type='feed_list']/DIV[@class='WB_cardwrap S_bg2 clearfix'] 定位到检索到的结果列表中的每一个元素 -->
+	<prop name="url" 	value="//DIV[@node-type='feed_list']/DIV[@class='WB_cardwrap S_bg2 clearfix']/DIV[@mid]//DIV[@class='feed_from W_textb']/A[@title]/@href" />
+	<prop name="author_url" value="//DIV[@node-type='feed_list']/DIV[@class='WB_cardwrap S_bg2 clearfix']/DIV[@mid]//DIV[@class='feed_content wbcon']/A[1]/@href" />
+	<prop name="author" 	value="//DIV[@node-type='feed_list']/DIV[@class='WB_cardwrap S_bg2 clearfix']/DIV[@mid]//DIV[@class='feed_content wbcon']/A[1]" />
+	<prop name="pubtime" 	value="//DIV[@node-type='feed_list']/DIV[@class='WB_cardwrap S_bg2 clearfix']/DIV[@mid]//DIV[@class='feed_from W_textb']/A[@title]" />
+	<prop name="source" 	value="//DIV[@node-type='feed_list']/DIV[@class='WB_cardwrap S_bg2 clearfix']/DIV[@mid]//DIV[@class='content clearfix']/DIV[@class='feed_from W_textb']/A[2]" />
+	<prop name="content" 	value="//DIV[@node-type='feed_list']/DIV[@class='WB_cardwrap S_bg2 clearfix']/DIV[@mid]//DIV[@class='feed_content wbcon']/P[@class='comment_txt']" />
+	<prop name="img_url" 	value="(//DIV[@node-type='feed_list']/DIV[@class='WB_cardwrap S_bg2 clearfix'])[index]/DIV[@mid]//DIV[@class='feed_content wbcon']//DIV[@class='WB_media_wrap clearfix']/DIV[@class='media_box']/UL/LI[1]/IMG[1]/@src" />
+<!--	http://ww4.sinaimg.cn/thumbnail/a140c53bgw1e2msk1u7v0j.jpg
+	http://ww4.sinaimg.cn/bmiddle/a140c53bgw1e2msk1u7v0j.jpg -->
+	<prop name="author_img" 	value="//DIV[@node-type='feed_list']/DIV[@class='WB_cardwrap S_bg2 clearfix']/DIV[@mid]//DIV[@class='face']//A/IMG/@src" />
+	<prop name="rtt_num" 	value="//DIV[@node-type='feed_list']/DIV[@class='WB_cardwrap S_bg2 clearfix']/DIV[@mid]/DIV[2]/UL/LI[2]" />
+	<prop name="comment_num" 	value="//DIV[@node-type='feed_list']/DIV[@class='WB_cardwrap S_bg2 clearfix']/DIV[@mid]/DIV[2]/UL/LI[3]" />
+	<prop name="mid" 	value="//DIV[@node-type='feed_list']/DIV[@class='WB_cardwrap S_bg2 clearfix']/DIV[@mid]/@mid" />
+	<prop name="uid" 	value="//DIV[@node-type='feed_list']/DIV[@class='WB_cardwrap S_bg2 clearfix']/DIV[@mid]//DIV[@class='feed_content wbcon']/A/@usercard" />
+	<prop name="rtt_content" 	value="" />
+	<prop name="next" 	value="//A[contains(.,'下一页')]/@href" />
+	<prop name="next_prefix" 	value="http://s.weibo.com" />
+	
+	<!-- 
+	<prop name="url" value="//DL/DD[@class='content']/P[last()]/A[1]/@href" />
+	<prop name="author_url" value="//DL/DD[@class='content']/P[1]/A[1]/@href" />
+	<prop name="author" value="//DL/DD[@class='content']/P[1]/A[1]" />
+	<prop name="pubtime" value="//DL/DD[@class='content']/P[last()]/A[1]" />
+	<prop name="source" value="//DL/DD[@class='content']/P[last()]/A[2]" />
+	<prop name="content" value="//DL/DD[@class='content']/P[1]/EM" />
+	<prop name="img_url" value="]/DD[@class='content']/UL/LI/IMG[1]/@src" />
+	<prop name="author_img" value="//DL/DT[@class='face']/A/IMG/@src" />
+	<prop name="rtt_num" value="//DD[@class='content']/P/SPAN/A[2]" />
+	<prop name="comment_num" value="//DD[@class='content']/P/SPAN/A[4]" />
+	<prop name="mid" value="//DL[@action-type]/@mid" />
+	<prop name="uid" value="//DL/DD[@class='content']/P[1]/A[1]/@usercard" />
+	<prop name="rtt_content" value="]/DD[@class='content']/DL/DT/EM" />
+	<prop name="next" value="//A[contains(.,'下一页')]/@href" />
+	<prop name="next_prefix" value="http://s.weibo.com" />
+	
+	-->
+</site>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<site>
+	<prop name="site" value="tirechina" />
+	<prop name="siteName" value="tirechina_news_monitor" />
+	<prop name="siteFlag" value="11" />
+	<prop name="charset" value="gbk" />
+	<prop name="downInterval" value="15" />
+	<prop name="page" value="1" />
+	<prop name="threadNum" value="1" />
+	<prop name="accessUrl" value="" />
+	<!-- 列表页 -->
+	<prop name="title" value="//DIV[@class='inc_contentone']/UL/LI/DIV/A" />
+	<prop name="url" value="//DIV[@class='inc_contentone']/UL/LI/DIV/A/@href" />
+	<prop name="url_prefix" value="http://www.tirechina.net" />
+	<prop name="pubtime" value="//DIV[@class='inc_contentone']/UL/LI/DIV[2]" />
+	<prop name="next" value="//DIV[@class='pages']/A[contains(.,'下')]/@href" />
+	<prop name="next_prefix" value="http://www.tirechina.net"/>
+
+	
+	<!-- 内容页 -->
+	<prop name="originalSource" value="//DIV[@class='inc_pagenavto']/text()[contains(.,'来源')]" />
+	<prop name="content" value="//DIV[@id='endText']" />
+	<prop name="imgUrl" value="//DIV[@id='endText']//IMG/@src" />
+</site>

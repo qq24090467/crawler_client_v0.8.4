@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xsi:schemaLocation="http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context-3.0.xsd
+          http://www.springframework.org/schema/data/mongo
+          http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd
+          http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+          
+	<bean id="launchMode" class="java.lang.String">
+		<constructor-arg index="0" value="servermode"></constructor-arg>
+	</bean>
+	
+    <bean id="propertyConfigurer"  
+              class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
+            <property name="location" value="file:config/config.properties"/>  
+    </bean>  
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${databaseDriver}" />
+		<property name="url" value="${databaseType}${datasourceHost}${databaseSeparator}${database}" />
+		<property name="username" value="${datasourceUsername}" />
+		<property name="password" value="${datasourcePassword}" />
+		
+        <property name="validationQuery" value="select 1 from dual" />
+	</bean>
+    <!-- <bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url"
+			value="${datasource.url}">
+		</property>
+		<property name="username" value="${datasource.username}"></property>
+		<property name="password" value="${datasource.password}"></property>
+		
+		<property name="minEvictableIdleTimeMillis" value="1800000" />
+        <property name="numTestsPerEvictionRun" value="3" />
+        <property name="testOnBorrow" value="true" />
+        <property name="testWhileIdle" value="true" />
+        <property name="testOnReturn" value="true" />
+        <property name="validationQuery" value="SELECT 1" />
+	</bean> -->
+	
+    <bean id = "jdbcTemplate"    
+         class = "org.springframework.jdbc.core.JdbcTemplate">
+         <property name = "dataSource" ref="dataSource"/>
+    </bean>
+    
+    <bean id="transactionManager"    
+         class="org.springframework.jdbc.datasource.DataSourceTransactionManager">    
+         <property name = "dataSource" ref="dataSource"/>    
+    </bean>
+    
+    <bean id="transactionInterceptor"     
+         class="org.springframework.transaction.interceptor.TransactionInterceptor" 
+         abstract="true">      
+        <property name="transactionManager">       
+                  <ref bean="transactionManager" />      
+        </property>
+	   <property name="transactionAttributes">      
+	        <props>      
+	            <prop key="delete*">PROPAGATION_REQUIRED</prop>   
+	            <prop key="insert*">PROPAGATION_REQUIRED,-Exception</prop>      
+	            <prop key="update*">PROPAGATION_REQUIRED,-Exception</prop>      
+	            <prop key="save*">PROPAGATION_REQUIRED</prop>      
+	            <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>      
+	       </props>      
+	   </property>
+	</bean>
+    <bean id="txProxy"     
+         class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">      
+        <property name="beanNames">
+          <list>
+             <value>*ServiceImpl</value>
+          </list>
+        </property>
+        <property name="interceptorNames">      
+          <list>
+             <value>transactionInterceptor</value>
+          </list>
+        </property>
+   </bean>
+   
+</beans>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<site>
+	<prop name="site" value="weixin" />
+	<prop name="siteName" value="weixin_weixin_search" />
+	<prop name="siteFlag" value="102" />
+	<prop name="charset" value="utf-8" />
+	<prop name="downInterval" value="15" />
+	<prop name="page" value="50" />
+	<prop name="threadNum" value="1" />
+	<prop name="accessUrl"
+		value="http://weixin.sogou.com/weixin?query=&lt;keyword&gt;&type=2" />
+
+	<!-- 列表页 -->
+	<prop name="title"
+		value="//DIV[@class='results']/DIV/DIV/H4/A[contains(@id,'title')]" />
+	<prop name="url"
+		value="//DIV[@class='results']/DIV/DIV/H4/A[contains(@id,'title')]/@href" />
+	<prop name="brief"
+		value="//DIV[@class='results']/DIV/DIV/P[contains(@id,'summary')]" />
+
+
+	<prop name="next" value="//A[contains(@id,'next')]/@href" />
+	<prop name="next_prefix" value="http://weixin.sogou.com/weixin" />
+
+	<!-- 内容页 -->
+	<prop name="pubtime" value="//EM[@id='post-date']/text()" />
+	<prop name="imgs_url"
+		value="//DIV[@id='img-content']/DIV[@id='js_content']//IMG/@data-src" />
+
+	<prop name="content" value="//DIV[@id='img-content']/DIV[@id='js_content']//P" />
+	<prop name="author" value="//A[@id='post-user']" />
+
+	<prop name="source" value="//A[@id='post-user']" />
+</site>
